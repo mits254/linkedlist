@@ -1,5 +1,6 @@
+const expect = require('chai').expect
 const Node = require('../src/node')
-const LinkedList = require('../src/linked-list')
+const LinkedList = require('../src/linkedlist')
 
 
     describe('LinkedList', () => {
@@ -7,7 +8,7 @@ const LinkedList = require('../src/linked-list')
             const list = new LinkedList()
 
             it('assign 0 to this.length', () => {
-                expect(list.length).to.equal(0);
+                expect(list.length).to.equal(0)
             })
         });
     })
@@ -20,8 +21,8 @@ const LinkedList = require('../src/linked-list')
 
             list.add(data);
 
-            expect(list._tail).to.be.an.instanceof(Node)
-            expect(list._head).to.be.an.instanceof(Node)
+            expect(list.tail).to.be.an.instanceof(Node)
+            expect(list.head).to.be.an.instanceof(Node)
         });
 
         it('should add new data to the end of list', () => {
@@ -31,23 +32,23 @@ const LinkedList = require('../src/linked-list')
             list.add(420);
 
             expect(list.length).to.equal(2);
-            expect(list.tail()).to.equal(666);
-            expect(list.head()).to.equal(420);
+            expect(list.indexOf(0)).to.equal(666);
+            expect(list.indexOf(1)).to.equal(420);
         });
 
     })
 
     describe('indexOf', () => {
         it('should return Node.data by index', () => {
-            const list = new LinkedList();
+            const list = new LinkedList()
 
-            list.add(123);
-            list.add(456);
-            list.add(789);
+            list.add(123)
+            list.add(456)
+            list.add(789)
 
-            expect(list.at(0)).to.equal(123);
-            expect(list.at(1)).to.equal(456);
-            expect(list.at(2)).to.equal(789);
+            expect(list.indexOf(0)).to.equal(123)
+            expect(list.indexOf(1)).to.equal(456)
+            expect(list.indexOf(2)).to.equal(789)
 
         });
     })
@@ -56,29 +57,29 @@ const LinkedList = require('../src/linked-list')
         it('should delete element by index', () => {
             const list = new LinkedList();
 
-            list.append(1);
-            list.append(2);
-            list.append(3);
-            list.append(4);
-            list.append(5);
+            list.append(1)
+            list.append(2)
+            list.append(3)
+            list.append(4)
+            list.append(5)
 
-            list.deleteAt(2);
+            list.deleteAt(2)
 
-            expect(list.at(2)).to.equal(4);
+            expect(list.at(2)).to.equal(4)
         });
     });
 
     describe('insertAt', () => {
         it('should insert data by index', () => {
-            const list = new LinkedList();
-            const data = 9001;
-            const position = 1;
+            const list = new LinkedList()
+            const data = 9001
+            const position = 1
 
-            list.append(32);
-            list.append(47);
+            list.append(32)
+            list.append(47)
 
-            list.insertAt(position, data);
+            list.insertAt(position, data)
 
-            expect(list.at(position)).to.equal(data);
+            expect(list.at(position)).to.equal(data)
         });
     });
