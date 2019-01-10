@@ -40,8 +40,42 @@ class LinkedList {
 
 
 
-    //insertAt()
+    insertAt(index, data) {
+
+        if (index > this.length || index < 0) {
+            throw new Error('something happened');
+        }
+        if (index == this.length) {
+            this.add(data);
+            return this;
+        }
+
+        let nextNode = this.get(index);
+        let prevNode = nextNode.prev;
+
+        let newNode = new Node(data);
+        newNode.next = nextNode;
+
+        if (!Object.is(prevNode, null)) {
+            prevNode.next = newNode;
+            newNode.prev = prevNode;
+            nextNode.prev = newNode;
+            
+        } else {
+            this.head.prev = newNode;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+
     //removeAt()
+    removeAll() {
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+        return this;
+    }
 }
 
 module.exports = LinkedList
