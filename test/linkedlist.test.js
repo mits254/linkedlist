@@ -1,77 +1,86 @@
 const expect = require('chai').expect
-const linkedList = require('../linkedlist')
+const Node = require('../src/node')
+const LinkedList = require('../src/linkedlist')
 
 
+    describe('LinkedList', () => {
+        describe('#constructor', () => {
+            const list = new LinkedList()
 
-
-describe("linked list", () => {
-    describe("creating a linked list", () => {
-        it("should create a linked list", () =>{
-            const list = new linkedList ()
-            
-            list.add('hey')
-            list.add('sup')
-
-            expect(list.length).to.equal(2)
-        })
+            it('assign 0 to this.length', () => {
+                expect(list.length).to.equal(0)
+            })
+        });
     })
-})
 
-describe("indexOf", () => {
-    describe("it returns the index of a given element", () => {
-        it("should return a number", () =>{
-            const list = new linkedList ()
+    describe('add', () => {
+        it('should assign any nodes to this._head and this._tail if list is empty', () => {
+            const data = 101;
 
-            list.add(123)
-            list.add(456)
-            list.add(789)
+            const list = new LinkedList();
 
-            expect(list.indexOf(0)).to.equal(123);
-            expect(list.indexOf(1)).to.equal(456);
-            expect(list.indexOf(2)).to.equal(789);
-        })
-    })
-})
+            list.add(data);
 
-describe("isEmpty", () => {
-    describe("if the list is empty", () => {
-        it("should return true", () =>{
-            const list = new linkedList ()
+            expect(list.tail).to.be.an.instanceof(Node)
+            expect(list.head).to.be.an.instanceof(Node)
+        });
 
-            expect(list).to.equal(true)
-        })
-    })
-})
-
-describe("add", () => {
-    describe("adds an element at the end of list", () => {
-        it("create a new index at the end", () =>{
-            const list = new linkedList ()
+        it('should add new data to the end of list', () => {
+            const list = new LinkedList();
 
             list.add(666);
             list.add(420);
 
             expect(list.length).to.equal(2);
+            expect(list.indexOf(0)).to.equal(666);
             expect(list.indexOf(1)).to.equal(420);
+        });
 
-        })
     })
-})
 
-describe("removeFrom", () => {
-    describe("removes and returns an element from the list", () => {
-        it("return a specific index", () =>{
-            const list = new linkedList ()
+    describe('indexOf', () => {
+        it('should return Node.data by index', () => {
+            const list = new LinkedList()
 
-            list.add(1);
-            list.add(2);
-            list.add(3);
-            list.add(4);
-            list.add(5);
+            list.add(123)
+            list.add(456)
+            list.add(789)
 
-            list.removeFrom(2)
-            
-            expect(list.at(2)).to.equal(4);
-        })
+            expect(list.indexOf(0)).to.equal(123)
+            expect(list.indexOf(1)).to.equal(456)
+            expect(list.indexOf(2)).to.equal(789)
+
+        });
     })
-})
+
+    describe('insertAt', () => {
+        it('should insert data by index', () => {
+            const list = new LinkedList()
+            const data = 9001
+            const position = 1
+
+            list.add(32)
+            list.add(47)
+
+            list.insertAt(position, data)
+
+            expect(list.indexOf(position)).to.equal(data)
+        });
+    });
+
+    describe('removeAt', () => {
+        it('should delete element by index', () => {
+            const list = new LinkedList();
+
+            list.add(1)
+            list.add(2)
+            list.add(3)
+            list.add(4)
+            list.add(5)
+
+            list.removeAt(2)
+
+            expect(list.indexOf(2)).to.equal(4)
+        });
+    });
+
