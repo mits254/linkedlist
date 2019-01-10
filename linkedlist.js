@@ -1,14 +1,16 @@
 class LinkedList { 
     constructor() 
     { 
-        this.head = null; 
-        this.size = 0; 
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
     } 
   
-    // add(element)  
-    // removeFrom(location) 
-  
-    // isEmpty 
+    // add()  
+    // get() 
+    // indexOf()  
+    // insertAt()
+    // removeAt()
 
 } 
 
