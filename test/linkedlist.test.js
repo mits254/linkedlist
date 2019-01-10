@@ -53,33 +53,34 @@ const LinkedList = require('../src/linkedlist')
         });
     })
 
-    describe('removeAt', () => {
-        it('should delete element by index', () => {
-            const list = new LinkedList();
-
-            list.append(1)
-            list.append(2)
-            list.append(3)
-            list.append(4)
-            list.append(5)
-
-            list.deleteAt(2)
-
-            expect(list.at(2)).to.equal(4)
-        });
-    });
-
     describe('insertAt', () => {
         it('should insert data by index', () => {
             const list = new LinkedList()
             const data = 9001
             const position = 1
 
-            list.append(32)
-            list.append(47)
+            list.add(32)
+            list.add(47)
 
             list.insertAt(position, data)
 
-            expect(list.at(position)).to.equal(data)
+            expect(list.indexOf(position)).to.equal(data)
         });
     });
+
+    describe('removeAt', () => {
+        it('should delete element by index', () => {
+            const list = new LinkedList();
+
+            list.add(1)
+            list.add(2)
+            list.add(3)
+            list.add(4)
+            list.add(5)
+
+            list.removeAt(2)
+
+            expect(list.indexOf(2)).to.equal(4)
+        });
+    });
+
