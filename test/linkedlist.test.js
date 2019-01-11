@@ -1,6 +1,6 @@
 const expect = require('chai').expect
-const Node = require('../src/node')
-const LinkedList = require('../src/linkedlist')
+const Node = require('../node')
+const LinkedList = require('../linkedlist')
 
 
     describe('LinkedList', () => {
@@ -20,7 +20,7 @@ const LinkedList = require('../src/linkedlist')
             const list = new LinkedList();
 
             list.add(data);
-
+            
             expect(list.tail).to.be.an.instanceof(Node)
             expect(list.head).to.be.an.instanceof(Node)
         });
@@ -30,10 +30,13 @@ const LinkedList = require('../src/linkedlist')
 
             list.add(666);
             list.add(420);
+           
 
             expect(list.length).to.equal(2);
-            expect(list.indexOf(0)).to.equal(666);
-            expect(list.indexOf(1)).to.equal(420);
+            //console.log(list.indexOf(666))
+            expect(list.indexOf(666)).to.equal(0);
+            expect(list.indexOf(420)).to.equal(1);
+           
         });
 
     })
@@ -46,9 +49,9 @@ const LinkedList = require('../src/linkedlist')
             list.add(456)
             list.add(789)
 
-            expect(list.indexOf(0)).to.equal(123)
-            expect(list.indexOf(1)).to.equal(456)
-            expect(list.indexOf(2)).to.equal(789)
+            expect(list.indexOf(123)).to.equal(0)
+            expect(list.indexOf(456)).to.equal(1)
+            expect(list.indexOf(789)).to.equal(2)
 
         });
     })
@@ -64,7 +67,7 @@ const LinkedList = require('../src/linkedlist')
 
             list.insertAt(position, data)
 
-            expect(list.indexOf(position)).to.equal(data)
+            expect(list.indexOf(data)).to.equal(position)
         });
     });
 
@@ -80,7 +83,7 @@ const LinkedList = require('../src/linkedlist')
 
             list.removeAt(2)
 
-            expect(list.indexOf(2)).to.equal(4)
+            expect(list.indexOf(4)).to.equal(2)
         });
     });
 
