@@ -65,7 +65,7 @@ const LinkedList = require('../linkedlist')
             list.add(32)
             list.add(47)
 
-            list.insertAt(position, data)
+            list.insertAt(data, position)
 
             expect(list.indexOf(data)).to.equal(position)
         });

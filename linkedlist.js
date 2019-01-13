@@ -53,7 +53,45 @@ class LinkedList {
         return curr.data === data ? i : false;
 
     }
-    
+    insertAt(data, index) {
+        if(index > this.length || index < 0){
+            return('wrong index')
+        } 
+        if(index === this.length){
+            return this.add(data);
+        }
+        
+        let nodeAtIndex = this.get(index);
+        //console.log(nodeAtIndex);
+        let node = new Node(data);
+        let previous = nodeAtIndex.prev;
+        //console.log(previous);
+        previous.next = node;
+        node.prev = previous;
+        node.next = nodeAtIndex;
+        nodeAtIndex.prev = node;
+        this.length++;
+        return this;
+        
+      }
+
+    removeAt(value){
+        let currNode = this.get(value);
+        //console.log(currNode);
+        if(currNode){
+            if(currNode.prev == null){
+                this.head = currNode.next;
+            } else {
+                currNode.prev.next = currNode.next;
+                if(currNode.next){
+                  currNode.next.prev = currNode.prev;
+                }
+            }
+            this.length--;
+        }
+
+    }
+
     // add()  
     // get() 
     // indexOf()  
